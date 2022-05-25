@@ -5,12 +5,12 @@ const listePoke = document.querySelector(".liste-poke")
 
 const types = {
     grass: '#78C850',
-    ground: '#F2BE65',
-    dragon: '#6F35EC1',
+    ground: '#E2BF65',
+    dragon: '#6F35FC',
     fire: '#F58271',
     electric: '#F7D02C',
     fairy: '#D685AD',
-    noison: '#966DA3',
+    poison: '#966DA3',
     bug: '#B3F594',
     water: '#6390F0',
     normal: '#D9D5D8',
@@ -18,7 +18,8 @@ const types = {
     flying: '#A98FF3',
     fighting: '#C25956',
     rock: '#B6A136',
-    ghost: '#735797'
+    ghost: '#735797',
+    ice:  '#96D9D6'
 }
 
 function fetchPokemonBase() {
@@ -93,6 +94,29 @@ function createCard(arr) {
         listePoke.appendChild(carte)
     }
 
+}
+
+// Scroll infini
+
+window.addEventListener("scroll", () => {
+    
+    const {scrollTop, scrollHeight, clientHeight} = document.documentElement
+
+    if(clientHeight + scrollTop >= scrollHeight - 20) {
+        addPoke(6)
+    }
+})
+
+let index = 21
+
+function addPoke(nb) {
+
+    if(index > 151) {
+        return
+    }
+    const arrToAdd = allPokemon.slice(index, index + nb)
+    createCard(arrToAdd)
+    index += nb
 }
 
 // Animation input
