@@ -1,5 +1,14 @@
 const searchInput = document.querySelector(".recherche-poke input")
 
+function fetchPokemonBase() {
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+        .then(response => response.json())
+        .then((allPoke) => {
+            console.log(allPoke)
+        })
+}
+fetchPokemonBase()
+
 // Animation input
 
 searchInput.addEventListener("input", function(e) {
